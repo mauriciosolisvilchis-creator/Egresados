@@ -117,7 +117,7 @@ def login():
         password = request.form.get('password')
         if username == config.ADMIN_USER and password == config.ADMIN_PASS:
             session['admin'] = True
-            flash('Bienvenido, administrador.', 'success')
+            flash('Bienvenido, coordinador.', 'success')
             next_url = request.args.get('next') or url_for('dashboard')
             return redirect(next_url)
         else:
