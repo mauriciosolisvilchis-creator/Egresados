@@ -7,9 +7,9 @@
   </div>
 
   <!-- Formulario de búsqueda y botón compactos -->
-  <div class="search-container px-1 px-md-0">
+  <div class="search-container px-1 px-md-0 mx-auto mx-md-0">
     <form method="get" action="{{ url_for('egresados_list') }}" class="d-flex flex-column flex-md-row gap-2 w-100 align-items-md-center">
-      <input name="q" class="form-control form-control-sm flex-md-grow-1" placeholder="Buscar (matrícula, nombre, carrera, correo)" value="{{ q|default('') }}" />
+      <input name="q" class="form-control form-control-sm flex-md-grow-1" placeholder="Buscar..." value="{{ q|default('') }}" />
       <button class="btn btn-white btn-sm search-btn" type="submit">Buscar</button>
       <a class="btn btn-success btn-sm" href="{{ url_for('egresado_new') }}" style="white-space: nowrap;">+ Nuevo</a>
     </form>

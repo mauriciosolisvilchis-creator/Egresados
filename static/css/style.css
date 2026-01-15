@@ -165,8 +165,16 @@ h2{
     display: inline-block;
 }
 @media (max-width: 576px){
-    .login-card{ padding: 1rem !important; }
+    .login-card{ 
+        padding: 1rem !important;
+        border-radius: 8px;
+    }
     #login-logo{ width: 56px; }
+    .login-card .form-control-lg,
+    .login-card .btn-lg {
+        font-size: 1rem;
+        padding: 0.6rem 0.75rem;
+    }
 }
 
 /* Botones uniformes en login y formularios */
@@ -210,8 +218,27 @@ h2{
 }
 
 @media (max-width: 768px){
-    .chart-card{ height: 260px; }
-    .form-card{ padding: 1rem; }
+    .chart-card{ 
+        height: 240px;
+        min-height: 200px;
+    }
+    .chart-card h5 {
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+    }
+    .form-card{ 
+        padding: 1rem;
+        border-radius: 8px;
+    }
+    .form-card h2{
+        font-size: 1.1rem;
+        margin-bottom: 0.7rem;
+    }
+    .form-card .form-control,
+    .form-card .form-select,
+    .form-card .btn-lg {
+        font-size: 0.95rem;
+    }
 }
 
 /* Tablas */
@@ -243,12 +270,15 @@ h2{
     }
     .table.table-sm td, .table.table-sm th{
         padding: 0.35rem 0.3rem;
-        font-size: 0.85rem;
+        font-size: 0.75rem;
+    }
+    .table.table-sm th {
+        font-size: 0.7rem;
     }
     /* Ajustar columna de nombre para móviles */
     .col-nombre{
-        max-width: 120px;
-        font-size: 0.8rem;
+        max-width: 100px;
+        font-size: 0.75rem;
     }
     /* Ocultar columnas no esenciales en móvil */
     .col-generacion, 
@@ -258,6 +288,28 @@ h2{
     .table th:nth-child(8), .table td:nth-child(8),
     .table th:nth-child(9), .table td:nth-child(9) {
         display: none;
+    }
+}
+
+@media (max-width: 576px){
+    .table.table-sm td, .table.table-sm th{
+        padding: 0.25rem 0.2rem;
+        font-size: 0.7rem;
+    }
+    .table.table-sm th {
+        font-size: 0.65rem;
+        font-weight: 500;
+    }
+    .col-nombre{
+        max-width: 80px;
+        font-size: 0.65rem;
+    }
+    .col-matricula {
+        max-width: 70px;
+        font-size: 0.65rem;
+    }
+    .col-acciones {
+        min-width: 80px;
     }
 }
 
@@ -279,8 +331,11 @@ h2{
     gap: 0.5rem;
     flex-wrap: wrap;
     align-items: center;
-    max-width: 500px;
+    max-width: 100%;
     margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    padding: 0 0.5rem;
 }
 
 .search-container input,
@@ -310,13 +365,18 @@ h2{
 @media (max-width: 576px){
     .search-container{
         flex-direction: column;
+        max-width: 100%;
+        padding: 0 0.5rem;
+        width: 100%;
     }
     .search-container input{
         min-width: 100%;
+        font-size: 1rem;
     }
     .search-container button,
     .search-container a{
         width: 100%;
+        font-size: 0.9rem;
     }
 }
 
@@ -335,6 +395,8 @@ h2{
     .full-width-wrapper{
         margin: 0;
         padding: 0;
+        border-radius: 0;
+        box-shadow: none;
     }
 }
 
@@ -446,6 +508,27 @@ h2{
     border-color: #198754;
 }
 
+/* Overlay oscuro sutil para mejorar contraste sobre la imagen de fondo */
+body::before{
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.32);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Asegurar que elementos principales queden por encima del overlay */
+.navbar, .container, .login-card, .form-card, .card-dashboard, .chart-card, footer{
+    position: relative;
+    z-index: 2;
+}
+
+@media (max-width: 576px){
+    /* menos oscuridad en pantallas pequeñas */
+    body::before{ background: rgba(0,0,0,0.22); }
+}
+
 /* Botones de acción uniformes en tablas */
 .action-btn{
     min-width: auto;
@@ -484,6 +567,33 @@ h2{
     box-shadow: 0 6px 18px rgba(13,110,253,0.06);
 }
 
+@media (max-width: 768px){
+    .card-dashboard{
+        padding: 1rem;
+        border-radius: 8px;
+    }
+    .card-dashboard h5 {
+        font-size: 0.9rem;
+    }
+    .card-dashboard p {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 576px){
+    .card-dashboard{
+        padding: 0.8rem;
+    }
+    .card-dashboard h5 {
+        font-size: 0.8rem;
+        margin-bottom: 0.4rem;
+    }
+    .card-dashboard p {
+        font-size: 0.75rem;
+        margin-bottom: 0.3rem !important;
+    }
+}
+
 /* Alerts */
 .alert{
     margin-top: 1rem;
@@ -506,38 +616,24 @@ footer{
         padding: 0.4rem 0.5rem !important;
         font-size: 0.8rem;
     }
-}
-
-/* Overlay oscuro sutil para mejorar contraste sobre la imagen de fondo */
-body::before{
-    content: "";
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.32);
-    z-index: 1;
-    pointer-events: none;
-}
-
-/* Asegurar que elementos principales queden por encima del overlay */
-.navbar, .container, .login-card, .form-card, .card-dashboard, .chart-card, footer{
-    position: relative;
-    z-index: 2;
-}
-
-@media (max-width: 576px){
-    /* menos oscuridad en pantallas pequeñas */
-    body::before{ background: rgba(0,0,0,0.22); }
     
     /* Responsive container padding */
     .container{ 
-        padding-left: 1rem !important;
-        padding-right: 1rem !important;
+        padding-left: 0.75rem !important;
+        padding-right: 0.75rem !important;
+        width: 100% !important;
+        max-width: 100% !important;
     }
     
     /* Botones y formularios más grandes en móvil */
     .btn-sm{
-        font-size: 0.8rem;
-        padding: 0.35rem 0.6rem;
+        font-size: 0.75rem;
+        padding: 0.25rem 0.5rem;
+    }
+    
+    .btn-lg {
+        padding: 0.6rem 0.75rem;
+        font-size: 0.95rem;
     }
     
     /* Espaciado reducido en tablas en móvil */
@@ -549,5 +645,10 @@ body::before{
     .form-control-sm{
         min-height: 36px;
         font-size: 0.95rem;
+    }
+    
+    .form-control-lg,
+    .form-select {
+        font-size: 1rem;
     }
 }

@@ -1,18 +1,18 @@
 {% extends 'base.html' %}
 {% block title %}Dashboard{% endblock %}
 {% block content %}
-<div class="row g-3">
-  <div class="col-md-8">
-    <div class="card chart-card p-3">
-      <h5>Distribución por carrera</h5>
+<div class="row g-2 g-md-3">
+  <div class="col-12 col-md-8">
+    <div class="card chart-card p-2 p-md-3">
+      <h5 class="fs-6 fs-md-5">Distribución por carrera</h5>
       <canvas id="careerChart" height="150"></canvas>
     </div>
   </div>
-  <div class="col-md-4">
-    <div class="card card-dashboard p-3">
-      <h5>Resumen</h5>
-      <p>Total de egresados: <strong>{{ total }}</strong></p>
-      <a class="btn btn-success" href="{{ url_for('egresados_list') }}">Gestionar egresados</a>
+  <div class="col-12 col-md-4">
+    <div class="card card-dashboard p-2 p-md-3">
+      <h5 class="fs-6 fs-md-5">Resumen</h5>
+      <p class="mb-2 fs-7">Total de egresados: <strong>{{ total }}</strong></p>
+      <a class="btn btn-success w-100" href="{{ url_for('egresados_list') }}">Gestionar egresados</a>
     </div>
   </div>
 </div>
