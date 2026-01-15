@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% block title %}{{ action }} egresado{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-10 col-lg-8">
+    <div class="form-card p-4">
+      <h2>{{ action }} egresado</h2>
+      <form method="post">
+        <div class="mb-3">
+          <label class="form-label">Matrícula</label>
+          <input class="form-control" name="matricula" required value="{{ egresado['matricula'] if egresado else '' }}" {% if egresado %}readonly{% endif %}>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Nombre completo</label>
+          <input class="form-control" name="nombre_completo" required value="{{ egresado['nombre_completo'] if egresado else '' }}" pattern="[a-záéíóúñA-ZÁÉÍÓÚÑ\s]+" title="Solo se permiten letras, acentos y espacios">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Carrera</label>
+          <select class="form-select" name="carrera">
+            <option value="">--</option>
+            {% for c in carreras %}
+            <option value="{{ c }}" {% if egresado and egresado['carrera']==c %}selected{% endif %}>{{ c }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Generación</label>
+          <input class="form-control" name="generacion" value="{{ egresado['generacion'] if egresado else '' }}" placeholder="Ej: 2022-2027">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Estatus</label>
+          <select class="form-select" name="estatus">
+            <option value="">--</option>
+            <option {% if egresado and egresado['estatus']=='Egresado' %}selected{% endif %}>Egresado</option>
+            <option {% if egresado and egresado['estatus']=='En seguimiento' %}selected{% endif %}>En seguimiento</option>
+            <option {% if egresado and egresado['estatus']=='Titulado' %}selected{% endif %}>Titulado</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Domicilio</label>
+          <input class="form-control" name="domicilio" value="{{ egresado['domicilio'] if egresado else '' }}">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Género</label>
+          <select class="form-select" name="genero">
+            <option value="">--</option>
+            <option value="Femenino" {% if egresado and egresado['genero']=='Femenino' %}selected{% endif %}>Femenino</option>
+            <option value="Masculino" {% if egresado and egresado['genero']=='Masculino' %}selected{% endif %}>Masculino</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Teléfono</label>
+          <input class="form-control" name="telefono" value="{{ egresado['telefono'] if egresado else '' }}" pattern="[0-9]{10}" title="Ingrese un número de teléfono válido (10 dígitos)" placeholder="Ej: 5565000973">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Correo electrónico</label>
+          <input class="form-control" type="email" name="correo_electronico" value="{{ egresado['correo_electronico'] if egresado else '' }}">
+        </div>
+        <div class="d-flex gap-2">
+          <button class="btn btn-primary flex-grow-1" type="submit">Guardar</button>
+          <a class="btn btn-secondary flex-grow-1" href="{{ url_for('egresados_list') }}">Cancelar</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Validación en tiempo real para nombre
+  document.querySelector('input[name="nombre_completo"]').addEventListener('input', function(e) {
+    // Permitir solo letras, acentos, ñ y espacios
+    const regex = /[^a-záéíóúñA-ZÁÉÍÓÚÑ\s]/g;
+    e.target.value = e.target.value.replace(regex, '');
+  });
+
+  // Validación en tiempo real para teléfono
+  document.querySelector('input[name="telefono"]').addEventListener('input', function(e) {
+    // Permitir solo números
+    e.target.value = e.target.value.replace(/[^0-9]/g, '');
+    // Limitar a 10 dígitos
+    if (e.target.value.length > 10) {
+      e.target.value = e.target.value.slice(0, 10);
+    }
+  });
+</script>
+{% endblock %}

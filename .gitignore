@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+instance/
+.env
+.env.*
+.DS_Store
+/database/egresados.db
+*.sqlite3
+venv/
+.idea/
+.vscode/

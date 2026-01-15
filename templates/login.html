@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Login{% endblock %}
+{% block content %}
+<div class="row justify-content-center align-items-center" style="min-height:60vh;">
+  <div class="col-md-6 col-lg-5">
+    <div class="login-card p-4">
+      <div class="text-center mb-3">
+        <img src="{{ url_for('static', filename='images/umb.png') }}" id="login-logo" alt="logo" />
+        <h3 class="mt-2">Inicio de sesión</h3>
+      </div>
+      <form method="post">
+        <div class="mb-3">
+          <label class="form-label">Usuario</label>
+          <input class="form-control" name="username" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Contraseña</label>
+          <input class="form-control" type="password" name="password" required>
+        </div>
+        <div class="d-flex gap-2">
+          <button class="btn btn-primary flex-grow-1" type="submit">Ingresar</button>
+          <a class="btn btn-secondary flex-grow-1" href="{{ url_for('dashboard') }}">Cancelar</a>
+        </div>
+      </form> 
+    </div>
+  </div>
+</div>
+{% endblock %}
