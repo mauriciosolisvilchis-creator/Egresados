@@ -253,9 +253,12 @@ h2{
 
 /* Estilos específicos para columnas */
 .col-nombre{
-    max-width: 200px;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
+    max-width: 220px;
+    white-space: nowrap; /* evitar que las letras se apilen verticalmente */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: normal;
+    overflow-wrap: normal;
 }
 
 /* Tabla responsiva para dispositivos móviles */
@@ -275,10 +278,13 @@ h2{
     .table.table-sm th {
         font-size: 0.7rem;
     }
-    /* Ajustar columna de nombre para móviles */
+    /* Ajustar columna de nombre para móviles: mantener horizontal y truncar */
     .col-nombre{
-        max-width: 100px;
+        max-width: 140px;
         font-size: 0.75rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
     /* Ocultar columnas no esenciales en móvil */
     .col-generacion, 
@@ -301,8 +307,11 @@ h2{
         font-weight: 500;
     }
     .col-nombre{
-        max-width: 80px;
+        max-width: 100px;
         font-size: 0.65rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
     .col-matricula {
         max-width: 70px;
