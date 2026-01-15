@@ -23,7 +23,7 @@
       <thead>
         <tr>
           <th class="col-matricula">Matrícula</th>
-          <th>Nombre</th>
+          <th class="col-nombre">Nombre</th>
           <th class="col-carrera">Carrera</th>
           <th class="col-generacion">Generación</th>
           <th class="col-estatus">Estatus</th>
@@ -38,7 +38,7 @@
         {% for e in egresados %}
         <tr>
           <td class="align-middle col-matricula">{{ e['matricula'] }}</td>
-          <td class="align-middle">{{ e['nombre_completo'] }}</td>
+          <td class="align-middle col-nombre">{{ e['nombre_completo'] }}</td>
           <td class="align-middle col-carrera">{{ e['carrera'] }}</td>
           <td class="align-middle col-generacion">{{ e['generacion'] }}</td>
           <td class="align-middle col-estatus">{{ e['estatus'] }}</td>

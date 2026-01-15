@@ -224,6 +224,13 @@ h2{
     word-break: break-word;
 }
 
+/* Estilos específicos para columnas */
+.col-nombre{
+    max-width: 200px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
 /* Tabla responsiva para dispositivos móviles */
 .table-responsive{
     overflow-x: auto !important;
@@ -237,6 +244,11 @@ h2{
     .table.table-sm td, .table.table-sm th{
         padding: 0.35rem 0.3rem;
         font-size: 0.85rem;
+    }
+    /* Ajustar columna de nombre para móviles */
+    .col-nombre{
+        max-width: 120px;
+        font-size: 0.8rem;
     }
     /* Ocultar columnas no esenciales en móvil */
     .col-generacion, 
